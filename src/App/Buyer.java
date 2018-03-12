@@ -2,7 +2,8 @@ package App;
 
 import java.util.ArrayList;
 
-import UtilityClasses.Submodular;
+import UtilityClasses.Combinatorial;
+import UtilityClasses.Submodular2;
 
 public class Buyer {
 	
@@ -24,8 +25,16 @@ public class Buyer {
 		this.n = n;
 		
 		//initialize valuations for n products
-		Submodular sub = new Submodular(n);
-		this.valuations = sub.getValuations();	
+		
+		if (typeOfBuyer == 0) {
+			Combinatorial comb = new Combinatorial(n);
+			this.valuations = comb.getValuations();
+		}
+		else if (typeOfBuyer == 1) {
+			Submodular2 sub = new Submodular2(n);
+			this.valuations = sub.getValuations();
+		}
+		
 	}
 
 	public int getTypeOfBuyer() {
