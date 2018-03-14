@@ -30,7 +30,6 @@ public class Submodular {
 			}
 		}
 		//create binary array copy
-		int[][] binArrCopy = binArr;
 		
 		
 		//create initial Valuations for each item respectively

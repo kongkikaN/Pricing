@@ -40,6 +40,7 @@ public class Submodular2 {
 			}
 		}
 		
+		//create bundles
 		for (int i = 0; i < binArr.length; i++) {
 			Bundle bundle = new Bundle(n, i, binArr[i]);
 			//bundle.printBundle();
@@ -61,10 +62,11 @@ public class Submodular2 {
 			b.setUpperBound(upperBound);
 		}
 		
-		//TODO : calculate lowerBound
 		
 		//valuation of bundle {0, 0, ..., 0} is always 0
 		bundles.get(0).setValue(0);
+		
+		//calculate lower bound
 		int max = 0;
 		for (Bundle b : bundles) {
 			for (Bundle c : bundles) {
@@ -77,9 +79,16 @@ public class Submodular2 {
 			
 			//IMPORTANT!!!
 			//Value of a bundle depends on the value of its subsets
+			//Let A, B be bundles
+			//if A subset of B, value of A cannot be higher than value of B
 			
-			Random random = new Random();
-			b.setValue(random.nextInt((b.getUpperBound() - max) + 1) + max);
+			if (max != 0) {
+				Random random = new Random();
+				b.setValue(random.nextInt((b.getUpperBound() - max) + 1) + max);
+			}
+			else {
+				b.setValue(b.getUpperBound());
+			}
 			
 			
 			b.setLowerBound(max);
@@ -91,7 +100,6 @@ public class Submodular2 {
 //		for (Bundle b : bundles) {
 //			b.printBundle();
 //		}
-		
 		
 		for (Bundle b : bundles) {
 			this.valuations.add(b.getValue());

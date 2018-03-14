@@ -12,13 +12,15 @@ public class Buyer {
 	int n; 					//n is the number of items he is offered
 	int[][] arr;			//combinations of items he can buy
 	ArrayList<Integer> valuations = new ArrayList<Integer>();
+	ArrayList<Integer> utilities = new ArrayList<Integer>();
 	
 	public Buyer(int typeOfBuyer, int budget, int n) {
 		this.typeOfBuyer = typeOfBuyer;
 		this.budget = budget;
 		this.n = n;
-		
 	}
+	
+	
 	
 	public Buyer(int typeOfBuyer, int n) {
 		this.typeOfBuyer = typeOfBuyer;
@@ -35,6 +37,10 @@ public class Buyer {
 			this.valuations = sub.getValuations();
 		}
 		
+	}
+	
+	public ArrayList<Integer> getValuations() {
+		return this.valuations;
 	}
 
 	public int getTypeOfBuyer() {
@@ -59,5 +65,21 @@ public class Buyer {
 
 	public void setN(int n) {
 		this.n = n;
+	}
+	
+	public ArrayList<Integer> getUtilities(){
+		return this.utilities;
+	}
+	
+	public void addUtility(int utility) {
+		this.utilities.add(utility);
+	}
+	
+	public void clearUtilityArray() {
+		this.utilities.clear();
+	}
+	
+	public void printUtilities() {
+		System.out.println("utilities : " + this.utilities);
 	}
 }
