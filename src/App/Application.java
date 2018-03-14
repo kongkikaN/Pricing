@@ -1,5 +1,6 @@
 package App;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Application {
@@ -9,13 +10,18 @@ public class Application {
 		int n = 3;			//number of sellers (each seller handles one item)
 		
 		//Initializing agents (Sellers)
+		ArrayList<Agent> agents = new ArrayList<Agent>();
+		
 		Scanner in = new Scanner(System.in);
 		System.out.println("0 : to initialize sellers with pi = 0");
 		System.out.println("1 : to initialize sellers with pi = RANDOM");
 		int k = in.nextInt();
+		for (int i = 0; i < 3; i++) {
+			Agent agent = new Agent(i, k);
+			agents.add(agent);
+		}
 		
-		printPrice(k, n);
-		
+		//printAgents(agents);
 		
 		//Initializing buyer
 		System.out.println("0 : for combinatorial buyer");
@@ -23,14 +29,22 @@ public class Application {
 		k = in.nextInt();
 		Buyer buyer = new Buyer(k, n);
 		
+		printBuyer(buyer);
+		System.out.println("\n");
+		
+		//Call Iterative Best Response
+		IterativeBestResponse ibr = new IterativeBestResponse(buyer, agents, n);
+		ibr.IterBestResp();
+		
 	}
 	
+	public static void printBuyer(Buyer buyer) {
+		System.out.println( "Buyer's Valuation : " + buyer.getValuations());
+	}
 	
-	
-	public static void printPrice(int k, int n) {
-		for (int i = 0; i < n; i++) {
-			Agent agent = new Agent(i, k);
-			System.out.println( i + "'s price = " + agent.getPrice());
+	public static void printAgents(ArrayList<Agent> agents) {
+		for (Agent agent : agents) {
+			System.out.println(agent.getPrice());
 		}
 	}
 
