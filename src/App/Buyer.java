@@ -20,8 +20,6 @@ public class Buyer {
 		this.n = n;
 	}
 	
-	
-	
 	public Buyer(int typeOfBuyer, int n) {
 		this.typeOfBuyer = typeOfBuyer;
 		this.n = n;

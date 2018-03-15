@@ -5,7 +5,10 @@ public class Agent {
 	int price;
 	int initType;
 	InitPrice InPrice = new InitPrice(initType);
+	int utility;
 	
+	
+
 	/**
 	 * 
 	 * @param id := id of each seller
@@ -34,6 +37,14 @@ public class Agent {
 	}
 	
 	public void printAgent() {
-		System.out.println("Seller id : " + this.id + " & price : " + this.price);
+		System.out.println("Seller id : " + this.id + " & price : " + this.price + " sellers utility = " + this.utility);
+	}
+	
+	public int getUtility() {
+		return utility;
+	}
+
+	public void setUtility(int utility) {
+		this.utility = utility;
 	}
 }

@@ -4,6 +4,7 @@ public class BinaryTable {
 	
 	int[][] binTable;
 	int n;
+	
 	public BinaryTable(int n) {
 		this.n = n;
 		this.binTable = initBinaryTable(n);
@@ -44,5 +45,13 @@ public class BinaryTable {
 		}
 	}
 	
+	public int[] getBundle(int row) {
+		int [] arr = new int[n];
+		for(int i = 0; i < n; i++) {
+			arr[i] = this.binTable[row][i];
+		}
+		
+		return arr;
+	}
 	
 }

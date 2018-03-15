@@ -10,7 +10,7 @@ public class Submodular2 {
 	
 	public Submodular2(int n) {
 		//MAX VALUATION
-		final int MAX_VALUATION = 100;
+		final int MAX_VALUATION = 10;
 		
 		//initialize Combinatorial valuations
 		Random r = new Random();
@@ -95,7 +95,6 @@ public class Submodular2 {
 			max = 0;
 		}
 		
-		
 		//print bundles
 //		for (Bundle b : bundles) {
 //			b.printBundle();
@@ -104,12 +103,9 @@ public class Submodular2 {
 		for (Bundle b : bundles) {
 			this.valuations.add(b.getValue());
 		}
-		
-		
 	}
 	
 	public int calculateUpperBound(Bundle b, ArrayList<Integer> initVals) {
-		
 		int [] arr = b.getArr();
 		int max = 0;
 		for (int i = 0; i < initVals.size(); i++) {
@@ -133,7 +129,6 @@ public class Submodular2 {
 				}
 			}
 		}
-		
 		return isSub;
 	}
 	
