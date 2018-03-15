@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class InitPrice {
 	
 	int price;
-	final int MAX_PRICE = 1000;
+	final int MAX_PRICE = 100;
 	
 	/**
 	 * if k == 0, all prices start with the value = 0;
@@ -20,9 +20,13 @@ public class InitPrice {
 		if (k == 0) {
 			return 0;
 		}
-		else {
+		else if (k == 1) {
 			Random r = new Random();
 			return (r.nextInt(MAX_PRICE));
 		}
+		else {
+			return MAX_PRICE;
+		}
 	}
+	
 }

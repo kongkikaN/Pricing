@@ -15,8 +15,9 @@ public class Application {
 		Scanner in = new Scanner(System.in);
 		System.out.println("0 : to initialize sellers with pi = 0");
 		System.out.println("1 : to initialize sellers with pi = RANDOM");
+		System.out.println("2 : to initialize sellers with pi = MAX_PRICE");
 		int k = in.nextInt();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < n; i++) {
 			Agent agent = new Agent(i, k);
 			agents.add(agent);
 		}

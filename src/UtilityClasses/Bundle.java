@@ -9,8 +9,8 @@ public class Bundle {
 	int n;
 	int arr[];
 	int value;
-	int upperBound;
-	int lowerBound;
+	int upperBound;		//only needed to calculate the value
+	int lowerBound;		//only needed to calculate the value
 	
 	public Bundle(int n,int id, int arr[]) {
 		this.id = id;
