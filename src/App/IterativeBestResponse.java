@@ -23,7 +23,7 @@ public class IterativeBestResponse {
 		//iterative best response
 		
 		PrintWriter r = new PrintWriter("test-YourNumber.txt" , "UTF-8");
-		for (int day = 0; day < 3000; day++) {
+		for (int day = 0; day < 300; day++) {
 			
 			System.out.println("---------------------------------------------");
 			System.out.println("DAY " + day + "\n");
@@ -68,7 +68,6 @@ public class IterativeBestResponse {
 					System.out.println("\n Seller " + seller.id + " will decrease his price");
 				}
 			}
-			// TODO : 
 			/*
 			 * if seller sells
 			 * he will either increase his price (to get more money)

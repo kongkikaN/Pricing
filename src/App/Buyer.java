@@ -3,6 +3,7 @@ package App;
 import java.util.ArrayList;
 
 import UtilityClasses.Combinatorial;
+import UtilityClasses.CustomValuation;
 import UtilityClasses.Submodular2;
 
 public class Buyer {
@@ -33,6 +34,10 @@ public class Buyer {
 		else if (typeOfBuyer == 1) {
 			Submodular2 sub = new Submodular2(n);
 			this.valuations = sub.getValuations();
+		}
+		else if (typeOfBuyer ==2) {
+			CustomValuation customVal = new CustomValuation(n);
+			this.valuations = customVal.getValuations();
 		}
 		
 	}

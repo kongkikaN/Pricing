@@ -9,12 +9,24 @@ public class Application {
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		
-		int n = 3;			//number of sellers (each seller handles one item)
+		/*
+		 * this problem is equal to the combinatorial auction
+		 * our goal is to find equilibrium in online markets
+		 * the setup is as follows 
+		 * "n Sellers, each selling a unique item"
+		 * "One buyer with a private combinatorial valuation"
+		 * "Sellers (= Agents) set their prices in order to maximize their income"
+		 * "buyers decide to buy a product based on their utility"
+		 */
+		
+		Scanner in = new Scanner(System.in);
+		System.out.println("Please enter the number of sellers");
+		
+		int n = in.nextInt();			//number of sellers (each seller handles one item)
 		
 		//Initializing agents (Sellers)
 		ArrayList<Agent> agents = new ArrayList<Agent>();
 		
-		Scanner in = new Scanner(System.in);
 		System.out.println("0 : to initialize sellers with pi = 0");
 		System.out.println("1 : to initialize sellers with pi = RANDOM");
 		System.out.println("2 : to initialize sellers with pi = MAX_PRICE");
@@ -29,6 +41,7 @@ public class Application {
 		//Initializing buyer
 		System.out.println("0 : for combinatorial buyer");
 		System.out.println("1 : for submodular buyer");
+		System.out.println("2 : for custom valuations");
 		k = in.nextInt();
 		Buyer buyer = new Buyer(k, n);
 		
