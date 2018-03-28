@@ -8,6 +8,13 @@ public class Submodular {
 	
 	ArrayList <Integer> valuations = new ArrayList<Integer>();
 	
+	/*
+	 * 
+	 * THIS WAS JUST A TEST!!!
+	 * THE CORRECT SUBMODULAR CLASS IS "Submodular2"
+	 * 
+	 */
+	
 	//initialize valuations for n products
 	public Submodular(int n) {
 		

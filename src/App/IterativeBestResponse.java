@@ -68,7 +68,6 @@ public class IterativeBestResponse {
 					System.out.println("\n Seller " + seller.id + " will decrease his price");
 				}
 			}
-			// TODO : 
 			/*
 			 * if seller sells
 			 * he will either increase his price (to get more money)
