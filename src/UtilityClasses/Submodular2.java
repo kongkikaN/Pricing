@@ -3,6 +3,8 @@ package UtilityClasses;
 import java.util.ArrayList;
 import java.util.Random;
 
+import App.FinalVariables;
+
 public class Submodular2 {
 	
 	ArrayList<Integer> valuations = new ArrayList<Integer>();
@@ -10,7 +12,7 @@ public class Submodular2 {
 	
 	public Submodular2(int n) {
 		//MAX VALUATION
-		final int MAX_VALUATION = 10;
+		final int MAX_VALUATION = (new FinalVariables()).getMAX_VALUATION();
 		
 		//initialize Combinatorial valuations
 		Random r = new Random();

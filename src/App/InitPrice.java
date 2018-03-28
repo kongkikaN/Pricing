@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class InitPrice {
 	
 	int price;
-	final int MAX_PRICE = 100;
+	final int MAX_PRICE = (new FinalVariables()).getMAX_PRICE();
 	
 	/**
 	 * if k == 0, all prices start with the value = 0;
