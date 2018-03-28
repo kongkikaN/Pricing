@@ -23,7 +23,7 @@ public class IterativeBestResponse {
 		//iterative best response
 		
 		PrintWriter r = new PrintWriter("test-YourNumber.txt" , "UTF-8");
-		for (int day = 0; day < 300; day++) {
+		for (int day = 0; day < 3000; day++) {
 			
 			System.out.println("---------------------------------------------");
 			System.out.println("DAY " + day + "\n");
