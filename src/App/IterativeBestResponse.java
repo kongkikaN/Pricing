@@ -1,5 +1,8 @@
 package App;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class IterativeBestResponse {
@@ -14,11 +17,13 @@ public class IterativeBestResponse {
 		IterativeBestResponse.n = n;
 	}
 	
-	public static void IterBestResp() {
+	public static void IterBestResp() throws FileNotFoundException, UnsupportedEncodingException {
 		
 		// TODO : seller sets price based on binary search
 		//iterative best response
-		for (int day = 0; day < 50; day++) {
+		
+		PrintWriter r = new PrintWriter("test-YourNumber.txt" , "UTF-8");
+		for (int day = 0; day < 3000; day++) {
 			
 			System.out.println("---------------------------------------------");
 			System.out.println("DAY " + day + "\n");
@@ -88,7 +93,7 @@ public class IterativeBestResponse {
 			System.out.println("\n"  + " UTILITY TABLE WILL BECOME " );
 			buyer.printUtilities();
 			System.out.println("\n");
-			printPrices();
+			printPrices(r);
 			System.out.print("bundle purchased : { ");
 			printTable(bundlePurchased);
 			System.out.println("}");
@@ -98,14 +103,18 @@ public class IterativeBestResponse {
 			clearWorkspace();
 		}
 		
+		r.close();
 	}
 	
-	public static void printPrices() {
+	public static void printPrices(PrintWriter writer) throws FileNotFoundException, UnsupportedEncodingException {
 		System.out.println();
+		
 		System.out.print("Agent prices = {");
 		for (Agent agent : agents) {
 			System.out.print(agent.getPrice() + ", ");
+			writer.print(agent.getPrice() + " ");
 		}
+		writer.println();
 		System.out.println("}");
 	}
 	
