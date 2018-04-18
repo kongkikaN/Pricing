@@ -5,6 +5,13 @@ import java.util.Random;
 
 import App.FinalVariables;
 
+/**
+ * this class implements the 
+ * for every X, Y subsets of OMEGA with X subset of Y and every x in OMEGA we have 
+ * f(X U {x}) - f(X) >= f(Y U {x}) - f(Y)
+ * @author Nikos Kongkika
+ *
+ */
 public class Submodular2 {
 	
 	ArrayList<Integer> valuations = new ArrayList<Integer>();

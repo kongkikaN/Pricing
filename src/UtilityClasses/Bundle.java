@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class Bundle {
 	
+	//this IS NOT a utility class... 
+	//This is only a Bundle class to calculate bundles
+	
 	ArrayList<Bundle> subsets = new ArrayList<Bundle>();
 	int id;
 	int n;

@@ -16,7 +16,7 @@ public class Application {
 		 * "n Sellers, each selling a unique item"
 		 * "One buyer with a private combinatorial valuation"
 		 * "Sellers (= Agents) set their prices in order to maximize their income"
-		 * "buyers decide to buy a product based on their utility"
+		 * "buyer decides to buy a bundle of products based on his utility"
 		 */
 		
 		Scanner in = new Scanner(System.in);
@@ -40,17 +40,27 @@ public class Application {
 		
 		//Initializing buyer
 		System.out.println("0 : for combinatorial buyer");
-		System.out.println("1 : for submodular buyer");
+		System.out.println("1 : for submodular2 buyer");
 		System.out.println("2 : for custom valuations");
+		System.out.println("3 : for submodular buyer - using set cover");
+		System.out.println("4 : for single minded buyers");
 		k = in.nextInt();
 		Buyer buyer = new Buyer(k, n);
 		
 		printBuyer(buyer);
 		System.out.println("\n");
+		 
+		//Call Iterative Response
 		
-		//Call Iterative Best Response
-		IterativeBestResponse ibr = new IterativeBestResponse(buyer, agents, n);
-		ibr.IterBestResp();
+		
+		IterativeResponse ir = new IterativeResponse(buyer, agents, n);
+//		iterative response
+		ir.IterResp();		//changes price by one
+		 
+		
+		//IterativeBestResponse ibr = new IterativeBestResponse(buyer, agents, n);
+		//ibr.iterativeBestResponse();
+		
 		
 	}
 	

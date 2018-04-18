@@ -5,25 +5,25 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class IterativeBestResponse {
+public class IterativeResponse {
 	
 	static Buyer buyer;
 	static ArrayList<Agent> agents;
 	static int n;
 	
-	public IterativeBestResponse(Buyer buyer, ArrayList<Agent> agents, int n) {
-		IterativeBestResponse.buyer = buyer;
-		IterativeBestResponse.agents = agents;
-		IterativeBestResponse.n = n;
+	public IterativeResponse(Buyer buyer, ArrayList<Agent> agents, int n) {
+		IterativeResponse.buyer = buyer;
+		IterativeResponse.agents = agents;
+		IterativeResponse.n = n;
 	}
 	
-	public static void IterBestResp() throws FileNotFoundException, UnsupportedEncodingException {
+	public static void IterResp() throws FileNotFoundException, UnsupportedEncodingException {
 		
-		// TODO : seller sets price based on binary search
-		//iterative best response
+		//iterative response
+		//changes price by one in each iteration without considering the prices of the other sellers
 		
 		PrintWriter r = new PrintWriter("test-YourNumber.txt" , "UTF-8");
-		for (int day = 0; day < 3000; day++) {
+		for (int day = 0; day < 100; day++) {
 			
 			System.out.println("---------------------------------------------");
 			System.out.println("DAY " + day + "\n");
