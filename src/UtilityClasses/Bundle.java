@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Bundle {
 	
 	//this IS NOT a utility class... 
-	//This is only a Bundle class to calculate bundles
+	//This is only a Bundle class to calculate bundles (only for Submodular2 class)
+	
 	
 	ArrayList<Bundle> subsets = new ArrayList<Bundle>();
 	int id;
@@ -36,7 +37,7 @@ public class Bundle {
 		this.lowerBound = lowerBound;
 	}
 
-	public int[] getArr() {
+	public int[] getBundle() {
 		return this.arr;
 	}
 	

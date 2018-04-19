@@ -18,12 +18,23 @@ public class IterativeResponse {
 	}
 	
 	public static void IterResp() throws FileNotFoundException, UnsupportedEncodingException {
-		
 		//iterative response
 		//changes price by one in each iteration without considering the prices of the other sellers
 		
 		PrintWriter r = new PrintWriter("test-YourNumber.txt" , "UTF-8");
-		for (int day = 0; day < 100; day++) {
+		
+		String theSellers = "";
+		String vals = "";
+		for (int k = 0; k < n; k++) {
+			theSellers += "agent" + k + " ";
+		}
+		for (int k = 0; k < buyer.getValuations().size(); k++) {
+			vals += buyer.getValuations().get(k) + " ";
+		}
+		r.println(vals);
+		r.println(theSellers);
+		
+		for (int day = 0; day < 3000; day++) {
 			
 			System.out.println("---------------------------------------------");
 			System.out.println("DAY " + day + "\n");

@@ -115,7 +115,7 @@ public class Submodular2 {
 	}
 	
 	public int calculateUpperBound(Bundle b, ArrayList<Integer> initVals) {
-		int [] arr = b.getArr();
+		int [] arr = b.getBundle();
 		int max = 0;
 		for (int i = 0; i < initVals.size(); i++) {
 			max += initVals.get(i) * arr[i];
@@ -127,8 +127,8 @@ public class Submodular2 {
 	 * returns if bundle b2 is a subset of bundle b1
 	 */
 	public boolean isSubset(Bundle b2, Bundle b1) {
-		int[] arr2 = b2.getArr();
-		int[] arr1 = b1.getArr();
+		int[] arr2 = b2.getBundle();
+		int[] arr1 = b1.getBundle();
 		
 		boolean isSub = true;
 		for (int i = 0; i < arr2.length; i++) {
