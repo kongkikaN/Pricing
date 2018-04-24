@@ -6,9 +6,6 @@ public class Agent {
 	int initType;
 	InitPrice InPrice = new InitPrice(initType);
 	int utility;
-	
-	
-
 	/**
 	 * 
 	 * @param id := id of each seller

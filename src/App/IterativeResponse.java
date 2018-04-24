@@ -5,24 +5,35 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class IterativeBestResponse {
+public class IterativeResponse {
 	
 	static Buyer buyer;
 	static ArrayList<Agent> agents;
 	static int n;
 	
-	public IterativeBestResponse(Buyer buyer, ArrayList<Agent> agents, int n) {
-		IterativeBestResponse.buyer = buyer;
-		IterativeBestResponse.agents = agents;
-		IterativeBestResponse.n = n;
+	public IterativeResponse(Buyer buyer, ArrayList<Agent> agents, int n) {
+		IterativeResponse.buyer = buyer;
+		IterativeResponse.agents = agents;
+		IterativeResponse.n = n;
 	}
 	
-	public static void IterBestResp() throws FileNotFoundException, UnsupportedEncodingException {
-		
-		// TODO : seller sets price based on binary search
-		//iterative best response
+	public static void IterResp() throws FileNotFoundException, UnsupportedEncodingException {
+		//iterative response
+		//changes price by one in each iteration without considering the prices of the other sellers
 		
 		PrintWriter r = new PrintWriter("test-YourNumber.txt" , "UTF-8");
+		
+		String theSellers = "";
+		String vals = "";
+		for (int k = 0; k < n; k++) {
+			theSellers += "agent" + k + " ";
+		}
+		for (int k = 0; k < buyer.getValuations().size(); k++) {
+			vals += buyer.getValuations().get(k) + " ";
+		}
+		r.println(vals);
+		r.println(theSellers);
+		
 		for (int day = 0; day < 3000; day++) {
 			
 			System.out.println("---------------------------------------------");
@@ -33,24 +44,8 @@ public class IterativeBestResponse {
 			//print buyers utility
 			buyer.printUtilities();
 			
-			//get index of bundle (=id) the buyer will purchase
-			int bundlePurchasedIndex = getIndexWithMaxUtil();
-			System.out.println("bundle purchased id = " + bundlePurchasedIndex);
-			
-			BinaryTable bi = new BinaryTable(n);
-			int[] bundlePurchased = bi.getBundle(bundlePurchasedIndex);
-			//print the bundle the buyer will purchase
-			
-			
 			//calculate sellers utility
-			/*
-			 * sellers utility = 0, if buyer doesn't purchase his product
-			 * sellers utility = price, if buyer purchases his product
-			 */
-			
-			for (int i = 0; i < n; i++) {
-				agents.get(i).setUtility(bundlePurchased[i] * agents.get(i).getPrice());
-			}
+			int[] bundlePurchased = calculateSellersUtil();
 			
 			//select a seller
 			Agent seller = agents.get(day%n);		//select agent day % n
@@ -74,13 +69,17 @@ public class IterativeBestResponse {
 			 * or he will keep his price intact.
 			 */
 			else {
+				calculateSellersUtil();
 				int currentUtility = seller.getUtility();
 				seller.setPrice(seller.getPrice() + 1);
 				buyer.clearUtilityArray();
 				calculateUtilityTable();
+				calculateSellersUtil();
 				int temporaryUtility = seller.getUtility();
-				if (currentUtility < temporaryUtility) {
+				System.out.println("----currentUtility---- " + currentUtility + " -------- tempUtil ---------" + temporaryUtility);
+				if (currentUtility >= temporaryUtility) {
 					seller.setPrice(seller.getPrice() -1);
+					buyer.clearUtilityArray();
 					calculateUtilityTable();
 					System.out.println("\n Seller " + seller.id + " will not change his price");
 				}else {
@@ -163,4 +162,27 @@ public class IterativeBestResponse {
 			System.out.print(arr[i] + ", ");
 		}
 	}
+	
+	public static int[] calculateSellersUtil() {
+		//get index of bundle (=id) the buyer will purchase
+		int bundlePurchasedIndex = getIndexWithMaxUtil();
+		System.out.println("bundle purchased id = " + bundlePurchasedIndex);
+		
+		BinaryTable bi = new BinaryTable(n);
+		int[] bundlePurchased = bi.getBundle(bundlePurchasedIndex);
+		//print the bundle the buyer will purchase
+		
+		
+		//calculate sellers utility
+		/*
+		 * sellers utility = 0, if buyer doesn't purchase his product
+		 * sellers utility = price, if buyer purchases his product
+		 */
+		
+		for (int i = 0; i < n; i++) {
+			agents.get(i).setUtility(bundlePurchased[i] * agents.get(i).getPrice());
+		}
+		return bundlePurchased;
+	}
+	
 }
