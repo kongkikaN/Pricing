@@ -44,24 +44,8 @@ public class IterativeResponse {
 			//print buyers utility
 			buyer.printUtilities();
 			
-			//get index of bundle (=id) the buyer will purchase
-			int bundlePurchasedIndex = getIndexWithMaxUtil();
-			System.out.println("bundle purchased id = " + bundlePurchasedIndex);
-			
-			BinaryTable bi = new BinaryTable(n);
-			int[] bundlePurchased = bi.getBundle(bundlePurchasedIndex);
-			//print the bundle the buyer will purchase
-			
-			
 			//calculate sellers utility
-			/*
-			 * sellers utility = 0, if buyer doesn't purchase his product
-			 * sellers utility = price, if buyer purchases his product
-			 */
-			
-			for (int i = 0; i < n; i++) {
-				agents.get(i).setUtility(bundlePurchased[i] * agents.get(i).getPrice());
-			}
+			int[] bundlePurchased = calculateSellersUtil();
 			
 			//select a seller
 			Agent seller = agents.get(day%n);		//select agent day % n
@@ -85,13 +69,17 @@ public class IterativeResponse {
 			 * or he will keep his price intact.
 			 */
 			else {
+				calculateSellersUtil();
 				int currentUtility = seller.getUtility();
 				seller.setPrice(seller.getPrice() + 1);
 				buyer.clearUtilityArray();
 				calculateUtilityTable();
+				calculateSellersUtil();
 				int temporaryUtility = seller.getUtility();
-				if (currentUtility < temporaryUtility) {
+				System.out.println("----currentUtility---- " + currentUtility + " -------- tempUtil ---------" + temporaryUtility);
+				if (currentUtility >= temporaryUtility) {
 					seller.setPrice(seller.getPrice() -1);
+					buyer.clearUtilityArray();
 					calculateUtilityTable();
 					System.out.println("\n Seller " + seller.id + " will not change his price");
 				}else {
@@ -174,4 +162,27 @@ public class IterativeResponse {
 			System.out.print(arr[i] + ", ");
 		}
 	}
+	
+	public static int[] calculateSellersUtil() {
+		//get index of bundle (=id) the buyer will purchase
+		int bundlePurchasedIndex = getIndexWithMaxUtil();
+		System.out.println("bundle purchased id = " + bundlePurchasedIndex);
+		
+		BinaryTable bi = new BinaryTable(n);
+		int[] bundlePurchased = bi.getBundle(bundlePurchasedIndex);
+		//print the bundle the buyer will purchase
+		
+		
+		//calculate sellers utility
+		/*
+		 * sellers utility = 0, if buyer doesn't purchase his product
+		 * sellers utility = price, if buyer purchases his product
+		 */
+		
+		for (int i = 0; i < n; i++) {
+			agents.get(i).setUtility(bundlePurchased[i] * agents.get(i).getPrice());
+		}
+		return bundlePurchased;
+	}
+	
 }

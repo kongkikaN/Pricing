@@ -52,12 +52,12 @@ public class Application {
 		//Call Iterative Response
 		
 		
-//		IterativeResponse ir = new IterativeResponse(buyer, agents, n);
-////		iterative response
-//		ir.IterResp();		//changes price by one
+		IterativeResponse ir = new IterativeResponse(buyer, agents, n);
+//		iterative response
+		ir.IterResp();		//changes price by one
 		
-		IterativeBestResponse ibr = new IterativeBestResponse(buyer, agents, n);
-		ibr.iterativeBestResponse();
+//		IterativeBestResponse ibr = new IterativeBestResponse(buyer, agents, n);
+//		ibr.iterativeBestResponse();
 		 
 		
 		//IterativeBestResponse ibr = new IterativeBestResponse(buyer, agents, n);
