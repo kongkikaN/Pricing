@@ -9,6 +9,7 @@ public class Application {
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		
+		
 		/*
 		 * this problem is equal to the combinatorial auction
 		 * our goal is to find equilibrium in online markets
