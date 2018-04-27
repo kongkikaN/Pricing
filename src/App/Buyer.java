@@ -21,7 +21,8 @@ public class Buyer {
 		this.typeOfBuyer = typeOfBuyer;
 		this.budget = budget;
 		this.n = n;
-	}
+	} 
+	//
 	
 	public Buyer(int typeOfBuyer, int n) {
 		this.typeOfBuyer = typeOfBuyer;
